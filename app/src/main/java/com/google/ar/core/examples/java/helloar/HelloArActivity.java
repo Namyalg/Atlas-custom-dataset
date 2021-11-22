@@ -236,9 +236,10 @@ public class HelloArActivity extends AppCompatActivity implements SampleRender.R
   @Override
   protected void onStart() {
     super.onStart();
+    //signIn();
     GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
     if (account == null) {
-      //signIn();
+      signIn();
     } else {
       email.setText(account.getEmail());
       mDriveServiceHelper = new DriveServiceHelper(getGoogleDriveService(getApplicationContext(), account, "appName"));
@@ -365,7 +366,7 @@ public class HelloArActivity extends AppCompatActivity implements SampleRender.R
         String imgpath = "/data/data/com.google.ar.core.examples.java.helloar/files/Images/" + i + ".jpg";
         String txtpath = "/data/data/com.google.ar.core.examples.java.helloar/files/Pose/" + i + ".txt";
         if(!uploaded.contains(contents[i])){
-          mDriveServiceHelper.uploadFile(new java.io.File(imgpath), "image/jpeg", "1Khh325NyLnwuXasucfMfB5Wm-unRj6l5")
+          mDriveServiceHelper.uploadFile(new java.io.File(imgpath), "image/jpeg", "1u713Ki9mr9U_Hdwq2D8WLpIMOY9TNblo")
           //mDriveServiceHelper.uploadFile(new java.io.File("/data/data/com.google.ar.core.examples.java.helloar/files/Images/0.jpg"), "image/jpeg", "1Khh325NyLnwuXasucfMfB5Wm-unRj6l5")
                   //mDriveServiceHelper.uploadFile(new java.io.File(getApplicationContext().getFilesDir(), "dummy.txt"), "text/plain", null)
                   .addOnSuccessListener(new OnSuccessListener<GoogleDriveFileHolder>() {
@@ -381,7 +382,7 @@ public class HelloArActivity extends AppCompatActivity implements SampleRender.R
                       Log.d(TAG, "onFailure: " + e.getMessage());
                     }
                   });
-          mDriveServiceHelper.uploadFile(new java.io.File(txtpath), "text/plain", "1ar4509kEIyDg2PZ7B4qgqeSQioH7LOf5")
+          mDriveServiceHelper.uploadFile(new java.io.File(txtpath), "text/plain", "1wA9aO3_pRaDXBppPme98UYffQ8rhA_Nl")
           //mDriveServiceHelper.uploadFile(new java.io.File("/data/data/com.google.ar.core.examples.java.helloar/files/Pose/0.txt"), "text/plain", "1ar4509kEIyDg2PZ7B4qgqeSQioH7LOf5")
                   //mDriveServiceHelper.uploadFile(new java.io.File(getApplicationContext().getFilesDir(), "dummy.txt"), "text/plain", null)
                   .addOnSuccessListener(new OnSuccessListener<GoogleDriveFileHolder>() {
@@ -1040,22 +1041,26 @@ public class HelloArActivity extends AppCompatActivity implements SampleRender.R
             image.getWidth(), image.getHeight()), 50, out);
     byte[] imageBytes = out.toByteArray();
     Bitmap bm = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+
+
+
     Bitmap bitmap = bm;
     // On android the camera rotation and the screen rotation
     // are off by 90 degrees, so if you are capturing an image
     // in "portrait" orientation, you'll need to rotate the image.
-    /*if (rotationDegrees != 0) {
-      //Matrix matrix = new Matrix();
-      //matrix.postRotate(rotationDegrees);
-//      android.graphics.Matrix matrix = android.graphics.Matrix.IDENTITY_MATRIX;
-//      Matrix matrix =
-      Matrix matrix = new Matrix();
-      matrix.transposeM(0.0, 0, 90, 0);
-      Bitmap scaledBitmap = Bitmap.createScaledBitmap(bm,
-              bm.getWidth(), bm.getHeight(), true);
-      bitmap = Bitmap.createBitmap(scaledBitmap, 0, 0,
-              scaledBitmap.getWidth(), scaledBitmap.getHeight(), android.graphics.Matrix.IDENTITY_MATRIX, true);
-    }*/
+//    if (rotationDegrees != 0) {
+//      java.util.Date
+//      Matrix matrix = new Matrix();
+//      matrix.postRotate(rotationDegrees);
+////      android.graphics.Matrix matrix = android.graphics.Matrix.IDENTITY_MATRIX;
+////      Matrix matrix =
+//      //Matrix matrix = new Matrix();
+//      //matrix.transposeM(0.0, 0, 90, 0);
+//      Bitmap scaledBitmap = Bitmap.createScaledBitmap(bm,
+//              bm.getWidth(), bm.getHeight(), true);
+//      bitmap = Bitmap.createBitmap(scaledBitmap, 0, 0,
+//              scaledBitmap.getWidth(), scaledBitmap.getHeight(), android.graphics.Matrix.IDENTITY_MATRIX, true);
+//    }
     System.out.println("Reached bitmap return --------------------------------------");
     return bitmap;
   }
